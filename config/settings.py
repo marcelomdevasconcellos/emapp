@@ -52,9 +52,8 @@ INSTALLED_APPS = [
     'treebeard',  # https://github.com/wuyue92tree/django-adminlte-ui
     'ajax_select',  # https://dev.to/thearjun/implement-autocomplete-in-django-3h20
     'reversion',
-    'rangefilter', # https://pypi.org/project/django-admin-rangefilter/
+    'rangefilter',  # https://pypi.org/project/django-admin-rangefilter/
     'django_extensions',
-    'planejamento',
 ] + INSTALLED_APPS_LOCAL
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
