@@ -13,18 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import debug_toolbar
 from django.contrib import admin
-from django.urls import include, path
-from django.views.generic import RedirectView
+from django.urls import path, include
+from .views import (
+    cards)
 
-admin.site.site_header = 'e-MAPP'
-admin.site.site_title = 'e-MAPP'
-admin.site.index_title = 'e-MAPP'
+app_name = "dashboard"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('dashboard/', include("dashboard.urls", namespace='dashboard')),
-    path('__debug__/', include(debug_toolbar.urls)),
-    path('', RedirectView.as_view(url='admin/')),
+    path('cards', cards, name='dashboard_cards'),
 ]

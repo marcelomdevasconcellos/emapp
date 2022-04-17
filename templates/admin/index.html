@@ -22,6 +22,32 @@
 
 {% block content %}
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+    $.getJSON("/dashboard/cards",
+    function (data) {
+        $('#propostas_cadastradas').html(data.propostas_cadastradas);
+        $('#projetos_aprovados').html(data.projetos_aprovados);
+        $('#projetos_paralisados').html(data.projetos_paralisados);
+        $('#year_4').html(data.year_4);
+        $('#year_3').html(data.year_3);
+        $('#year_2').html(data.year_2);
+        $('#year_1').html(data.year_1);
+        $('#year_0').html(data.year_0);
+        $('#value_year_4').html(data.value_year_4);
+        $('#value_year_3').html(data.value_year_3);
+        $('#value_year_2').html(data.value_year_2);
+        $('#value_year_1').html(data.value_year_1);
+        $('#value_year_0').html(data.value_year_0);
+        for (let i = 0; i < data.secretarias.length; i++) {
+            tableBody = $("#tabela_projetos_por_secretaria");
+            linha = "<tr><td>" + data.secretarias[i].codigo + "</td>";
+            linha += "<td>" + data.secretarias[i].nome + "</td>";
+            linha += "<td>" + data.secretarias[i].quant_projetos_aprovados + "</td>";
+            linha += "<td style='text-align: right'>" + data.secretarias[i].valor_projetos_aprovados + "</td></tr>";
+            tableBody.append(linha);
+        }
+    });
+</script>
 
 <div id="content-main">
     <div class="row">
@@ -29,13 +55,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><div id="projetos_cadastrados">0</div></h3>
-              <p>Projetos Cadastrados</p>
+              <h3><div id="propostas_cadastradas">-</div></h3>
+              <p>Propostas Cadastrados</p>
             </div>
             <div class="icon">
               <i class="fa fa-clock-o"></i>
             </div>
-            <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/planejamento/projeto/?status__exact={{ STATUS_PROPOSTA }}&q="
+               class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -43,13 +70,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><div id="projetos_aprovados">0</div></h3>
+              <h3><div id="projetos_aprovados">-</div></h3>
               <p>Projetos Aprovados</p>
             </div>
             <div class="icon">
               <i class="fa fa-check-square-o"></i>
             </div>
-            <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/planejamento/projeto/?status__exact={{ STATUS_APROVADO }}&q="
+               class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -57,13 +85,14 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3><div id="projetos_paralisados">0</div></h3>
+              <h3><div id="projetos_paralisados">-</div></h3>
               <p>Projetos Paralisados</p>
             </div>
             <div class="icon">
               <i class="fa fa-minus-circle"></i>
             </div>
-            <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/planejamento/projeto/?status__exact={{ STATUS_PENDENTE }}&q="
+               class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -71,13 +100,14 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><div id="acompanhamento_atrasado">0</div></h3>
+              <h3><div id="acompanhamento_atrasado">-</div></h3>
               <p>Acompanhamento atrasado</p>
             </div>
             <div class="icon">
               <i class="fa fa-hourglass-end"></i>
             </div>
-            <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/planejamento/projeto/?acompanhamento=atrasado&q="
+               class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -90,38 +120,30 @@
                     <h3 class="box-title">Projetos por Secretaria</h3>
                 </div>
                 <div class="box-body">
-                    <table id="example2"
+                    <table id="tabela_projetos_por_secretaria"
                            class="table table-bordered table-hover dataTable"
                            role="grid"
                            aria-describedby="example2_info">
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1"
+                                    rowspan="1" style="text-align: center"
+                                    colspan="1"
                                     aria-sort="ascending">Código</th>
                                 <th class="sorting"
                                     tabindex="0"
                                     aria-controls="example2"
-                                    rowspan="1" colspan="1">Secretaria</th>
+                                    rowspan="1" style="text-align: center"
+                                    colspan="1">Secretaria</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">Quantidade</th>
+                                    rowspan="1" style="text-align: center"
+                                    colspan="1">Quantidade</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">Valor</th>
+                                    rowspan="1" style="text-align: center"
+                                    colspan="1">Valor</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr role="row" class="odd">
-                              <td class="sorting_1">001</td>
-                              <td>SECRETARIA DE SAUDE</td>
-                              <td>10</td>
-                              <td>R$ 1.000.000,00</td>
-                            </tr>
-                            <tr role="row" class="odd">
-                              <td class="sorting_1">001</td>
-                              <td>SECRETARIA DE SEGURANÇA</td>
-                              <td>10</td>
-                              <td>R$ 1.000.000,00</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -142,27 +164,42 @@
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">Código</th>
+                                    rowspan="1" colspan="1"></th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">2018</th>
+                                    width="16%"
+                                    rowspan="1" colspan="1">
+                                    <div style="text-align: center" id="year_4">-</div>
+                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">2019</th>
+                                    width="16%"
+                                    rowspan="1" colspan="1">
+                                    <div style="text-align: center" id="year_3">-</div>
+                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">2020</th>
+                                    width="16%"
+                                    rowspan="1" colspan="1">
+                                    <div style="text-align: center" id="year_2">-</div>
+                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">2021</th>
+                                    width="16%"
+                                    rowspan="1" colspan="1">
+                                    <div style="text-align: center" id="year_1">-</div>
+                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="example2"
-                                    rowspan="1" colspan="1">2022</th>
+                                    width="16%"
+                                    rowspan="1" colspan="1">
+                                    <div style="text-align: center" id="year_0">-</div>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr role="row" class="odd">
                               <td>TOTAL GERAL</td>
-                              <td>R$ 1.000.000,00</td>
-                              <td>R$ 1.000.000,00</td>
-                              <td>R$ 1.000.000,00</td>
-                              <td>R$ 1.000.000,00</td>
-                              <td>R$ 1.000.000,00</td>
+                              <td><div style="text-align: right" id="value_year_4">-</div></td>
+                              <td><div style="text-align: right" id="value_year_3">-</div></td>
+                              <td><div style="text-align: right" id="value_year_2">-</div></td>
+                              <td><div style="text-align: right" id="value_year_1">-</div></td>
+                              <td><div style="text-align: right" id="value_year_0">-</div></td>
                             </tr>
                         </tbody>
                     </table>

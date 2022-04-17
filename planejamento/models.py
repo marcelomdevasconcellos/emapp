@@ -1,10 +1,8 @@
 from django.db import models
-
-# Create your models here.
-
+from django.contrib.auth.models import User
 from config.mixins import BaseModel
 from .choices import *
-from contrib.choices import STATUS_INICIAL
+from datetime import datetime, timedelta
 
 
 class Projeto(BaseModel):
@@ -45,10 +43,12 @@ class Projeto(BaseModel):
         'Quantidade', )
     data_aprovacao = models.DateTimeField(
         'Data de aprovação', blank=True, null=True)
+    data_ultimo_acompanhamento = models.DateTimeField(
+        'Data do último acompanhamento', blank=True, null=True)
     prazo_execucao = models.IntegerField(
         'Prazo de execução (meses)', )
     responsavel = models.ForeignKey(
-        'Responsavel',
+        'users.User',
         verbose_name='Responsável',
         on_delete=models.PROTECT,
         related_name='%(class)s_responsavel', )
@@ -56,6 +56,16 @@ class Projeto(BaseModel):
         'Status',
         choices=CHOICES_STATUS,
         default=STATUS_CADASTRADO, )
+
+    def acompanhamento(self):
+        if self.data_ultimo_acompanhamento and \
+                self.data_ultimo_acompanhamento >= datetime.now() - timedelta(days=30):
+            return 'Atualizado'
+        elif self.data_ultimo_acompanhamento and \
+                self.data_ultimo_acompanhamento < datetime.now() - timedelta(days=30):
+            return 'Atrasado'
+        else:
+            return 'Aguardando'
 
     def __str__(self):
         return '{} - {}'.format(
@@ -101,6 +111,23 @@ class Acompanhamento(BaseModel):
     descricao = models.TextField(
         'Descricao', )
 
+
+    def save(self, force_insert=False, force_update=False,
+             using=None, update_fields=None):
+
+        ultimo_acompanhamento = Acompanhamento.objects.filter(
+            projeto_id=self.projeto_id).order_by('-data').first()
+        projeto = Projeto.objects.filter(id=self.projeto_id)
+        if ultimo_acompanhamento and ultimo_acompanhamento.data >= self.data:
+            data_ultimo_acompanhamento = ultimo_acompanhamento.data
+        else:
+            data_ultimo_acompanhamento = self.data
+        projeto.update(data_ultimo_acompanhamento=data_ultimo_acompanhamento)
+
+        super(BaseModel, self).save(
+            force_insert=False, force_update=False,
+            using=None, update_fields=None, )
+
     def __str__(self):
         return '{} - {}'.format(
             self.id, self.data)
@@ -108,22 +135,3 @@ class Acompanhamento(BaseModel):
     class Meta:
         verbose_name = 'Acompanhamento'
         verbose_name_plural = 'Acompanhamentos'
-
-
-class Responsavel(BaseModel):
-    nome = models.CharField(
-        'Nome',
-        max_length=60, )
-    telefone = models.CharField(
-        'Telefone(s)',
-        max_length=150, )
-    email = models.EmailField(
-        'E-mail', )
-
-    def __str__(self):
-        return '{} - {}'.format(
-            self.id, self.nome)
-
-    class Meta:
-        verbose_name = 'Responsável'
-        verbose_name_plural = 'Responsáveis'

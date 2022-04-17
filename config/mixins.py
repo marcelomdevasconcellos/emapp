@@ -8,7 +8,6 @@ from django.forms import Select, Textarea
 from django_currentuser.middleware import get_current_user
 from reversion.admin import VersionAdmin
 
-
 LIST_PER_PAGE = 10
 LIST_MAX_SHOW_ALL = 50
 

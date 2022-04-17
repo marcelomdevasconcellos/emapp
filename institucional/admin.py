@@ -9,7 +9,13 @@ from config.mixins import (
 from .models import (
     Secretaria,
     Orgao,
+    CorpoTecnico,
 )
+
+
+class OrgaoInline(AuditoriaAdminTabularInline):
+    classes = ['collapse']
+    model = Orgao
 
 @admin.register(Secretaria)
 class SecretariaAdmin(AuditoriaAdmin):
@@ -24,7 +30,16 @@ class SecretariaAdmin(AuditoriaAdmin):
         'data_criacao',
         'data_extincao',
     )
+    inlines = [
+        OrgaoInline,
+    ]
     readonly_fields = AuditoriaAdmin.readonly_fields + ()
+
+
+
+class CorpoTecnicoInline(AuditoriaAdminTabularInline):
+    classes = ['collapse']
+    model = CorpoTecnico
 
 
 @admin.register(Orgao)
@@ -44,4 +59,7 @@ class OrgaoAdmin(AuditoriaAdmin):
         'data_criacao',
         'data_extincao',
     )
+    inlines = [
+        CorpoTecnicoInline,
+    ]
     readonly_fields = AuditoriaAdmin.readonly_fields + ()
