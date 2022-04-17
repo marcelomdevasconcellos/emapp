@@ -31,6 +31,7 @@ class AcompanhamentoInline(AuditoriaAdminTabularInline):
 
 @admin.register(Projeto)
 class ProjetoAdmin(AuditoriaAdmin):
+    change_form_template = "projetos_change_form.html"
     actions = []
     search_fields = (
         'nome',
@@ -58,6 +59,36 @@ class ProjetoAdmin(AuditoriaAdmin):
         FinanceiroInline,
         AcompanhamentoInline,
     ]
+
+    def response_change(self, request, obj):
+        from django.http import HttpResponseRedirect
+        from .choices import STATUS_PROPOSTA, STATUS_PENDENTE, STATUS_NEGADO, STATUS_APROVADO
+
+        if "_submeter" in request.POST:
+            obj.status = STATUS_PROPOSTA
+            obj.save()
+            self.message_user(request, "Status atualizado com sucesso")
+            return HttpResponseRedirect(".")
+
+        elif "_pendente" in request.POST:
+            obj.status = STATUS_PENDENTE
+            obj.save()
+            self.message_user(request, "Status atualizado com sucesso")
+            return HttpResponseRedirect(".")
+
+        elif "_negado" in request.POST:
+            obj.status = STATUS_NEGADO
+            obj.save()
+            self.message_user(request, "Status atualizado com sucesso")
+            return HttpResponseRedirect(".")
+
+        elif "_aprovado" in request.POST:
+            obj.status = STATUS_APROVADO
+            obj.save()
+            self.message_user(request, "Status atualizado com sucesso")
+            return HttpResponseRedirect(".")
+
+        return super().response_change(request, obj)
 
 
 @admin.register(Responsavel)

@@ -1,0 +1,193 @@
+{% extends 'admin/base.html' %}
+
+{% block icon_head %}
+{% endblock icon_head %}
+
+{% block logo %}
+<a href="{% url 'admin:index' %}" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini">
+        LSA
+    </span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg">
+        <b>
+            e-MAPP
+        </b>
+    </span>
+</a>
+{% endblock logo %}
+
+{% block search_menu %}
+{% endblock search_menu %}
+
+{% block menu %}
+<ul class="sidebar-menu">
+    <li class="active">
+        <a id="adminIndex" href="/admin/">
+        <i class="fa fa-dashboard"></i> <span>Visão geral</span>
+        </a>
+    </li>
+    <li class="treeview">
+        <a href="javascript:void(0)">
+        <i class="fa fa-line-chart"></i>
+        <span style="overflow: hidden; display: inline-block; vertical-align:top;">Planejamento</span>
+        <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="/admin/planejamento/projeto/">
+                <i class="fa fa-circle-o"></i>
+                Projetos
+                </a>
+            </li>
+            <li>
+                <a href="/admin/planejamento/responsavel/">
+                <i class="fa fa-circle-o"></i>
+                Responsáveis
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="javascript:void(0)">
+        <i class="fa fa-home"></i>
+        <span style="overflow: hidden; display: inline-block; vertical-align:top;">Institucional</span>
+        <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="/admin/institucional/secretaria/">
+                <i class="fa fa-circle-o"></i>
+                Secretarias
+                </a>
+            </li>
+            <li>
+                <a href="/admin/institucional/orgao/">
+                <i class="fa fa-circle-o"></i>
+                Órgãos
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="treeview">
+        <a href="javascript:void(0)">
+        <i class="fa fa-table"></i>
+        <span style="overflow: hidden; display: inline-block; vertical-align:top;">Cadastros Básicos</span>
+        <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="/admin/contrib/projetotipo/">
+                <i class="fa fa-circle-o"></i>
+                Tipos de projeto
+                </a>
+            </li>
+            <li>
+                <a href="/admin/contrib/unidadetipo/">
+                <i class="fa fa-circle-o"></i>
+                Tipos de unidade
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="treeview">
+        <a href="javascript:void(0)">
+        <i class="fa fa-users"></i>
+        <span style="overflow: hidden; display: inline-block; vertical-align:top;">Controle de Acesso</span>
+        <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="/admin/auth/group/">
+                <i class="fa fa-circle-o"></i>
+                Grupos
+                </a>
+            </li>
+            <li>
+                <a href="/admin/auth/user/">
+                <i class="fa fa-circle-o"></i>
+                Usuários
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    {% comment %}
+    <li class="treeview">
+        <a href="javascript:void(0)">
+        <i class="fa fa-database"></i>
+        <span style="overflow: hidden; display: inline-block; vertical-align:top;">AdminSettings</span>
+        <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="/admin/django_admin_settings/options/general_option/">
+                <i class="fa fa-circle-o"></i>
+                General Options
+                </a>
+            </li>
+            <li>
+                <a href="/admin/django_admin_settings/options/general_option/">
+                <i class="fa fa-circle-o"></i>
+                General Options
+                </a>
+            </li>
+            <li>
+                <a href="/admin/django_admin_settings/options/">
+                <i class="fa fa-circle-o"></i>
+                All Options
+                </a>
+            </li>
+            <li>
+                <a href="/admin/django_admin_settings/menu/">
+                <i class="fa fa-circle-o"></i>
+                Menu Setting
+                </a>
+            </li>
+        </ul>
+    </li>
+    {% endcomment %}
+
+    {% comment %}
+    <li class="treeview">
+       <a href="javascript:void(0)">
+           <i class="fa fa-gears"></i>
+           <span style="overflow: hidden; display: inline-block; vertical-align:top;">Settings</span>
+       </a>
+       <ul class="treeview-menu">
+          <li>
+             <a href="/admin/django_admin_settings/options/general_option/">
+             <i class="fa fa-circle-o"></i>
+             General Options
+             </a>
+          </li>
+          <li>
+             <a href="/admin/django_admin_settings/options/">
+             <i class="fa fa-circle-o"></i>
+             All Options
+             </a>
+          </li>
+          <li>
+             <a href="/admin/django_admin_settings/menu/">
+             <i class="fa fa-circle-o"></i>
+             Menu Setting
+             </a>
+          </li>
+       </ul>
+    </li>
+    {% endcomment %}
+ </ul>
+{% endblock menu %}
