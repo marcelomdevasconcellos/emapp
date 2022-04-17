@@ -36,3 +36,7 @@ Execute o comando abaixo no terminal:
 Execute o comando abaixo no terminal, ele abrirá o navegador.
 
 ```python manage.py runserver```
+
+### Para atualizar o diagrama de classe ###
+
+```python manage.py graph_models -a -g -o uml.png```
