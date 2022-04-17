@@ -1,0 +1,1 @@
+STATUS_INICIAL = 1

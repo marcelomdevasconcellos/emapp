@@ -48,19 +48,21 @@ class MultiFieldSortableChangeList(ChangeList):
 
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField('Criado em', blank=True, null=True)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.DO_NOTHING,
+        verbose_name='Criado por',
         related_name='%(class)s_created_by',
         blank=True,
         null=True,
         default=get_current_user()
     )
-    updated_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField('Modificado em', blank=True, null=True)
     updated_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.DO_NOTHING,
+        verbose_name='Modificado por',
         related_name='%(class)s_update_by',
         blank=True,
         null=True

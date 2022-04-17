@@ -1,0 +1,22 @@
+CHOICES_ANOS = (
+    (2017, '2017'),
+    (2018, '2018'),
+    (2019, '2019'),
+    (2020, '2020'),
+    (2021, '2021'),
+    (2022, '2022'),
+)
+
+STATUS_CADASTRADO = 0
+STATUS_PROPOSTA = 1
+STATUS_APROVADO = 2
+STATUS_PENDENTE = 3
+STATUS_NEGADO = 4
+
+CHOICES_STATUS = (
+    (STATUS_CADASTRADO, 'Cadastrado'),
+    (STATUS_PROPOSTA, 'Proposta'),
+    (STATUS_APROVADO, 'Aprovado'),
+    (STATUS_PENDENTE, 'Pendente'),
+    (STATUS_NEGADO, 'Negado'),
+)
