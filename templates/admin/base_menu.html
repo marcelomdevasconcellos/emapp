@@ -24,7 +24,7 @@
 {% block menu %}
 <ul class="sidebar-menu">
     <li class="active">
-        <a id="adminIndex" href="/admin/">
+        <a id="adminIndex" href="{% url 'admin:index' %}">
         <i class="fa fa-dashboard"></i> <span>Visão geral</span>
         </a>
     </li>
@@ -38,7 +38,7 @@
         </a>
         <ul class="treeview-menu">
             <li>
-                <a href="/admin/planejamento/projeto/">
+                <a href="{% url 'admin:planejamento_projeto_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Projetos
                 </a>
@@ -55,13 +55,13 @@
         </a>
         <ul class="treeview-menu">
             <li>
-                <a href="/admin/institucional/secretaria/">
+                <a href="{% url 'admin:institucional_secretaria_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Secretarias
                 </a>
             </li>
             <li>
-                <a href="/admin/institucional/orgao/">
+                <a href="{% url 'admin:institucional_orgao_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Órgãos
                 </a>
@@ -79,13 +79,13 @@
         </a>
         <ul class="treeview-menu">
             <li>
-                <a href="/admin/contrib/projetotipo/">
+                <a href="{% url 'admin:contrib_projetotipo_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Tipos de projeto
                 </a>
             </li>
             <li>
-                <a href="/admin/contrib/unidadetipo/">
+                <a href="{% url 'admin:contrib_unidadetipo_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Tipos de unidade
                 </a>
@@ -103,13 +103,13 @@
         </a>
         <ul class="treeview-menu">
             <li>
-                <a href="/admin/auth/group/">
+                <a href="{% url 'admin:auth_group_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Grupos
                 </a>
             </li>
             <li>
-                <a href="/admin/users/user/">
+                <a href="{% url 'admin:users_user_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Usuários
                 </a>
