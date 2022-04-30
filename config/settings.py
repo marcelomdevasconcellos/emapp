@@ -147,8 +147,10 @@ USE_THOUSAND_SEPARATOR = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+STATIC_URL = env('STATIC_URL') or '/static/'
+STATIC_ROOT = env('STATIC_ROOT') or 'static/'
+MEDIA_URL = env('MEDIA_URL') or '/media/'
+MEDIA_ROOT = env('MEDIA_ROOT') or 'media/'
 
 # Django Debug-Toolbar
 # The Debug Toolbar is shown only if your IP address is listed in the INTERNAL_IPS setting. 
