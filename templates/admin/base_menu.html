@@ -37,12 +37,14 @@
         </span>
         </a>
         <ul class="treeview-menu">
+            {% if perms.planejamento.view_projeto %}
             <li>
                 <a href="{% url 'admin:planejamento_projeto_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Projetos
                 </a>
             </li>
+            {% endif %}
         </ul>
     </li>
     <li class="treeview">
@@ -54,18 +56,22 @@
         </span>
         </a>
         <ul class="treeview-menu">
+            {% if perms.institucional.view_secretaria %}
             <li>
                 <a href="{% url 'admin:institucional_secretaria_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Secretarias
                 </a>
             </li>
+            {% endif %}
+            {% if perms.institucional.view_orgao %}
             <li>
                 <a href="{% url 'admin:institucional_orgao_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Órgãos
                 </a>
             </li>
+            {% endif %}
         </ul>
     </li>
 
@@ -78,18 +84,22 @@
         </span>
         </a>
         <ul class="treeview-menu">
+            {% if perms.contrib.view_projetotipo %}
             <li>
                 <a href="{% url 'admin:contrib_projetotipo_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Tipos de projeto
                 </a>
             </li>
+            {% endif %}
+            {% if perms.contrib.view_unidadetipo %}
             <li>
                 <a href="{% url 'admin:contrib_unidadetipo_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Tipos de unidade
                 </a>
             </li>
+            {% endif %}
         </ul>
     </li>
 
@@ -102,18 +112,22 @@
         </span>
         </a>
         <ul class="treeview-menu">
+            {% if perms.auth.view_group %}
             <li>
                 <a href="{% url 'admin:auth_group_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Grupos
                 </a>
             </li>
+            {% endif %}
+            {% if perms.users.view_user %}
             <li>
                 <a href="{% url 'admin:users_user_changelist' %}">
                 <i class="fa fa-circle-o"></i>
                 Usuários
                 </a>
             </li>
+            {% endif %}
         </ul>
     </li>
  </ul>
