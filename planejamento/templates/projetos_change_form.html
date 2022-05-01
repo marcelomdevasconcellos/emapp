@@ -113,16 +113,16 @@
         <div class="col-md-2">
             <div class="box">
                 <div class="box-body">
-                    {% if original.status == STATUS_CADASTRADO %}
+                    {% if perms.planejamento.can_submit_project and original.status == STATUS_CADASTRADO or original.status == STATUS_PENDENTE %}
                         <button type="submit" class="btn btn-block btn-primary" name="_submeter">Submeter</button>
                     {% endif %}
-                    {% if original.status == STATUS_PROPOSTA or original.status == STATUS_PENDENTE or original.status == STATUS_NEGADO %}
+                    {% if perms.planejamento.can_approve_project and original.status == STATUS_PROPOSTA or original.status == STATUS_PENDENTE or original.status == STATUS_NEGADO %}
                         <button type="submit" class="btn btn-block btn-success" name="_aprovado">Aprovar</button>
                     {% endif %}
-                    {% if original.status == STATUS_PROPOSTA or original.status == STATUS_NEGADO or original.status == STATUS_APROVADO %}
+                    {% if perms.planejamento.can_approve_project and original.status == STATUS_PROPOSTA or original.status == STATUS_NEGADO or original.status == STATUS_APROVADO %}
                         <button type="submit" class="btn btn-block btn-warning" name="_pendente">Pendente</button>
                     {% endif %}
-                    {% if original.status == STATUS_PROPOSTA or original.status == STATUS_PENDENTE or original.status == STATUS_APROVADO %}
+                    {% if perms.planejamento.can_approve_project and original.status == STATUS_PROPOSTA or original.status == STATUS_PENDENTE or original.status == STATUS_APROVADO %}
                         <button type="submit" class="btn btn-block btn-danger" name="_negado">Negar</button>
                     {% endif %}
                 </div>

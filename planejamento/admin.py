@@ -89,6 +89,24 @@ class ProjetoAdmin(AuditoriaAdmin):
         AcompanhamentoInline,
     ]
 
+    def has_change_permission(self, request, obj=None):
+        from .choices import STATUS_CADASTRADO, STATUS_PROPOSTA, STATUS_PENDENTE, STATUS_NEGADO, STATUS_APROVADO
+        STATUS_CAN_APPROVE = [
+            STATUS_PROPOSTA,
+            STATUS_NEGADO,
+            STATUS_APROVADO,
+            STATUS_PENDENTE,
+        ]
+        STATUS_CAN_SUBMIT = [
+            STATUS_CADASTRADO,
+            STATUS_PENDENTE,
+        ]
+        if request.user.has_perm('planejamento.can_approve_project') and obj and obj.status in STATUS_CAN_APPROVE:
+            return True
+        elif request.user.has_perm('planejamento.can_submit_project') and obj and obj.status in STATUS_CAN_SUBMIT:
+            return True
+        super().has_change_permission(request, obj)
+
     def response_change(self, request, obj):
         from django.http import HttpResponseRedirect
         from .choices import STATUS_PROPOSTA, STATUS_PENDENTE, STATUS_NEGADO, STATUS_APROVADO

@@ -30,6 +30,3 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
-        permissions = (
-            ("can_approve_project", "Pode aprovar projeto"),
-        )

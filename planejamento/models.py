@@ -74,6 +74,10 @@ class Projeto(BaseModel):
     class Meta:
         verbose_name = 'Projeto'
         verbose_name_plural = 'Projetos'
+        permissions = (
+            ("can_approve_project", "Pode aprovar projeto"),
+            ("can_submit_project", "Pode submeter projeto"),
+        )
 
 
 class Financeiro(BaseModel):
