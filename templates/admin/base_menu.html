@@ -28,6 +28,7 @@
         <i class="fa fa-dashboard"></i> <span>Visão geral</span>
         </a>
     </li>
+    {% if perms.planejamento %}
     <li class="treeview">
         <a href="javascript:void(0)">
         <i class="fa fa-line-chart"></i>
@@ -47,6 +48,8 @@
             {% endif %}
         </ul>
     </li>
+    {% endif %}
+    {% if perms.institucional %}
     <li class="treeview">
         <a href="javascript:void(0)">
         <i class="fa fa-home"></i>
@@ -74,7 +77,8 @@
             {% endif %}
         </ul>
     </li>
-
+    {% endif %}
+    {% if perms.contrib %}
     <li class="treeview">
         <a href="javascript:void(0)">
         <i class="fa fa-table"></i>
@@ -102,7 +106,8 @@
             {% endif %}
         </ul>
     </li>
-
+    {% endif %}
+    {% if perms.auth %}
     <li class="treeview">
         <a href="javascript:void(0)">
         <i class="fa fa-users"></i>
@@ -130,5 +135,6 @@
             {% endif %}
         </ul>
     </li>
+    {% endif %}
  </ul>
 {% endblock menu %}
