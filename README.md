@@ -1,5 +1,5 @@
 # e-MAPP
-e-MAPP - Monitoramento de Atividade e Projetos das Prefeituras
+e-MAPP - Monitoramento de Atividade e Projetos de Prefeituras
 
 ### 1. Criando o ambiente virtual ###
 
