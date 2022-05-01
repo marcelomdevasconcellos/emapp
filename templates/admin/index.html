@@ -23,7 +23,7 @@
 {% block content %}
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-    $.getJSON("/dashboard/cards",
+    $.getJSON("{% url 'dashboard:dashboard_cards' %}",
     function (data) {
         $('#propostas_cadastradas').html(data.propostas_cadastradas);
         $('#projetos_aprovados').html(data.projetos_aprovados);
@@ -61,7 +61,7 @@
             <div class="icon">
               <i class="fa fa-clock-o"></i>
             </div>
-            <a href="/admin/planejamento/projeto/?status__exact={{ STATUS_PROPOSTA }}&q="
+            <a href="{% url 'admin:planejamento_projeto_changelist' %}?status__exact={{ STATUS_PROPOSTA }}&q="
                class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -76,7 +76,7 @@
             <div class="icon">
               <i class="fa fa-check-square-o"></i>
             </div>
-            <a href="/admin/planejamento/projeto/?status__exact={{ STATUS_APROVADO }}&q="
+            <a href="{% url 'admin:planejamento_projeto_changelist' %}?status__exact={{ STATUS_APROVADO }}&q="
                class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -91,7 +91,7 @@
             <div class="icon">
               <i class="fa fa-minus-circle"></i>
             </div>
-            <a href="/admin/planejamento/projeto/?status__exact={{ STATUS_PENDENTE }}&q="
+            <a href="{% url 'admin:planejamento_projeto_changelist' %}?status__exact={{ STATUS_PENDENTE }}&q="
                class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -106,7 +106,7 @@
             <div class="icon">
               <i class="fa fa-hourglass-end"></i>
             </div>
-            <a href="/admin/planejamento/projeto/?acompanhamento=atrasado&q="
+            <a href="{% url 'admin:planejamento_projeto_changelist' %}?acompanhamento=atrasado&q="
                class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
