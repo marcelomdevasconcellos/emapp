@@ -1,4 +1,4 @@
-wheel==0.37.0
+wheel==0.37.1
 Django==3.2
 django-currentuser==0.5.3
 django-constance==2.8.0
