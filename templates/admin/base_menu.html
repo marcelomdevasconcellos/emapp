@@ -7,13 +7,11 @@
 <a href="{% url 'admin:index' %}" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
-        LSA
+        e<b>M</b>
     </span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
-        <b>
-            e-MAPP
-        </b>
+        e<b>MAPP</b>
     </span>
 </a>
 {% endblock logo %}
@@ -22,6 +20,14 @@
 {% endblock search_menu %}
 
 {% block menu %}
+    <script>
+    function alert_informacao_contratacao()
+    {
+    alert("ATENÇÃO: Esta funcionalidade não está disponível no sistema opensource, " +
+        "para contratá-la você deverá entrar em contato com " +
+        "o Marcelo Vasconcellos através do e-mail marcelomdevasconcellos@gmail.com.");
+    }
+</script>
 <ul class="sidebar-menu">
     <li class="active">
         <a id="adminIndex" href="{% url 'admin:index' %}">
@@ -38,11 +44,29 @@
         </span>
         </a>
         <ul class="treeview-menu">
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                PPA
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Orçamento
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
             {% if perms.planejamento.view_projeto %}
             <li>
                 <a href="{% url 'admin:planejamento_projeto_changelist' %}">
                 <i class="fa fa-circle-o"></i>
-                Projetos
+                MAPP
                 </a>
             </li>
             {% endif %}
@@ -78,14 +102,162 @@
         </ul>
     </li>
     {% endif %}
+
+    <li class="treeview">
+        <a href="javascript:void(0)">
+            <i class="fa fa-book"></i>
+            <span style="overflow: hidden; display: inline-block; vertical-align:top;">Instrumentos de Despesa</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Contratos
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Convênios
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Despesas sem contrato
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="treeview">
+        <a href="javascript:void(0)">
+            <i class="fa fa-check-square-o"></i>
+            <span style="overflow: hidden; display: inline-block; vertical-align:top;">Controle</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Contas
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Limites financeiros
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="treeview">
+        <a href="javascript:void(0)">
+            <i class="fa fa-users"></i>
+            <span style="overflow: hidden; display: inline-block; vertical-align:top;">Conselho Gestor</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Membros
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Reuniões
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Deliberações
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="treeview">
+        <a href="javascript:void(0)">
+            <i class="fa fa-money"></i>
+            <span style="overflow: hidden; display: inline-block; vertical-align:top;">Execução</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Acompanhamento Físico
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Pré-empenho
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="alert_informacao_contratacao();">
+                <i class="fa fa-circle-o"></i>
+                Pré-pagamento
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-red">Comprar!</small>
+                </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
     {% if perms.contrib %}
     <li class="treeview">
         <a href="javascript:void(0)">
-        <i class="fa fa-table"></i>
-        <span style="overflow: hidden; display: inline-block; vertical-align:top;">Cadastros Básicos</span>
-        <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-        </span>
+            <i class="fa fa-table"></i>
+            <span style="overflow: hidden; display: inline-block; vertical-align:top;">Cadastros Básicos</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
         </a>
         <ul class="treeview-menu">
             {% if perms.contrib.view_projetotipo %}

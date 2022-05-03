@@ -66,17 +66,28 @@
 
 {% block footer %}
 <div class="pull-right hidden-xs">
-    <b>Adminlte Version</b> 2.3.6
-</div>
-<strong>
+Sistema:
+    <strong>eMAPP - Monitoramento de Atividade e Projetos de Prefeituras</strong><br>
 Copyright &copy; {% now 'Y' %}
 {% if adminlte.copyright %}
     {{ adminlte.copyright }}.
 {% else %}
     {% get_adminlte_version as adminlte_version %}
-    <a href="https://github.com/wuyue92tree/django-adminlte-ui/tree/{{ adminlte_version }}">django-adminlte-ui {{ adminlte_version }}</a>.
+    <a href="https://www.marcelovasconcellos.com.br">www.marcelovasconcellos.com.br</a>.
 {% endif %}
-</strong> All rights reserved.
+All rights reserved.
+</div>
+Tema: <strong>Adminlte Version</strong> 2.3.6<br>
+Copyright &copy; {% now 'Y' %}
+{% if adminlte.copyright %}
+    {{ adminlte.copyright }}.
+{% else %}
+    {% get_adminlte_version as adminlte_version %}
+    <a href="https://github.com/wuyue92tree/django-adminlte-ui/tree/{{ adminlte_version }}">
+        django-adminlte-ui {{ adminlte_version }}
+    </a>.
+{% endif %}
+</> All rights reserved.
 {% endblock %}
 
 {% block extrajs %} {% endblock %}
