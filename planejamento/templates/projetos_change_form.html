@@ -110,22 +110,22 @@
 
             </div>
         </div>
-          <div class="col-md-2">
-              {% if original.status == STATUS_CADASTRADO %}
+        <div class="col-md-2">
+            {% if original.status == STATUS_CADASTRADO %}
             <div class="callout callout-info">
-              {% elif original.status == STATUS_PROPOSTA %}
+            {% elif original.status == STATUS_PROPOSTA %}
             <div class="callout callout-info">
-              {% elif original.status == STATUS_PENDENTE %}
+            {% elif original.status == STATUS_PENDENTE %}
             <div class="callout callout-warning">
-              {% elif original.status == STATUS_NEGADO %}
+            {% elif original.status == STATUS_NEGADO %}
             <div class="callout callout-danger">
-              {% elif original.status == STATUS_APROVADO %}
+            {% elif original.status == STATUS_APROVADO %}
             <div class="callout callout-success">
-              {% else %}
+            {% else %}
             <div class="callout callout-info">
-              {% endif %}
-            <h4>{{original.get_status_display|upper}}</h4>
-          </div>
+            {% endif %}
+                <h4 class="text-center">{{original.get_status_display|upper}}</h4>
+            </div>
         </div>
         <div class="col-md-2">
             <div class="box">
